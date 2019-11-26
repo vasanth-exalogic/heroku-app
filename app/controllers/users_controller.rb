@@ -79,7 +79,7 @@ class UsersController < ApplicationController
   end
 
   def is_admin?
-    if session[:user_type]!='admin'
+    unless session[:user_type]=='admin'
       redirect_to root_path
     end
   end

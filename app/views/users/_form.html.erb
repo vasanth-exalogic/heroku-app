@@ -2,16 +2,16 @@
 <span><%= @create_error%></span>
 <table class="w3-table w3-striped w3-border">
   <tr>
-    <td><%= f.label "First Name"%></td>
+    <td><%= f.label "First Name **"%></td>
     <td><%= f.text_field :fname, :required=>true%></td>
     <td><%= f.label "Last Name"%></td>
     <td><%= f.text_field :lname%></td>
   </tr>
   <tr>
-    <td><%= f.label "Date of Birth"%></td>
+    <td><%= f.label "Date of Birth **"%></td>
     <td><%= f.date_field :datebirth, :required=>true%></td>
     <td><%= f.label "Date of Joining"%></td>
-    <td><%= f.date_field :datejoining, :required=>true%></td>
+    <td><%= f.date_field :datejoining%></td>
   </tr>
   <tr>
       <td><%= f.label "Blood Type"%></td>
@@ -21,7 +21,7 @@
   </tr>
   <tr>
     <td><%= f.label :contact%></td>
-    <td><%= f.text_field :contact, :pattern=>'\d*', :maxlength=>10, :minlength=>10, :required=>true%></td>
+    <td><%= f.text_field :contact, :pattern=>'\d*', :maxlength=>10, :minlength=>10%></td>
     <td><%= f.label "Gender"%></td>
     <td><%= f.select :gender, ['Gender','Male','Female']%></td>
   </tr>
@@ -69,15 +69,15 @@
     <td colspan="4"><label><h3><b>LOGIN DETAILS</b></h3></label></td>
   </tr>
   <tr>
-    <td><%= f.label :email%></td>
+    <td><%= f.label "Email"%></td>
     <td><%= f.email_field :email, :required=>true%></td>
     <td></td>
     <td></td>
   </tr>
   <tr>
-    <td><%= f.label :password%></td>
+    <td><%= f.label "Password"%></td>
     <td><%= f.password_field :password%></td>
-    <td><%= f.label :"Confirm Password"%></td>
+    <td><%= f.label "Confirm Password"%></td>
     <td><%= f.password_field :password_confirmation%></td>
   </tr>
   <tr>
@@ -87,4 +87,6 @@
     <td></td>
   </tr>
 </table>
+<pre>
+</pre>
 <% end%>

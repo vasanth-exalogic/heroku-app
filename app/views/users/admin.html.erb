@@ -1,0 +1,21 @@
+<tr>
+  <td colspan="4"><label><h3><b>LOGIN DETAILS</b></h3></label></td>
+</tr>
+<tr>
+  <td><%= f.label :email%></td>
+  <td><%= f.email_field :email, :required=>true%></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td><%= f.label :password%></td>
+  <td><%= f.password_field :password%></td>
+  <td><%= f.label :"Confirm Password"%></td>
+  <td><%= f.password_field :password_confirmation%></td>
+</tr>
+<tr>
+  <td><%= f.submit%></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>

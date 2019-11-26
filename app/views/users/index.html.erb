@@ -29,16 +29,18 @@
               <th></th>
             </thead>
             <% @users.each do |user|%>
-              <tr>
-                <td><%= user.fname%></td>
-                <td><%= user.lname%></td>
-                <td><%= user.email%></td>
-                <td><%= user.contact.to_i%></td>
-                <td><%= user.pskill%></td>
-                <td><%= link_to "Show User", user, :class => "link"%></td>
-                <td><%= link_to "Edit User", edit_user_path(user), :class => "link"%></td>
-                <td><%= link_to "Delete User", user_path(user), method: :delete, data: { confirm: "Are you sure?"}, :class => "link"%></td>
-              </tr>
+              <% unless user.role %>
+                <tr>
+                  <td><%= user.fname%></td>
+                  <td><%= user.lname%></td>
+                  <td><%= user.email%></td>
+                  <td><%= user.contact.to_i%></td>
+                  <td><%= user.pskill%></td>
+                  <td><%= link_to "Show User", user, :class => "link"%></td>
+                  <td><%= link_to "Edit User", edit_user_path(user), :class => "link"%></td>
+                  <td><%= link_to "Delete User", user_path(user), method: :delete, data: { confirm: "Are you sure?"}, :class => "link"%></td>
+                </tr>
+              <% end %>
             <% end %>
           </table>
         </fieldset>

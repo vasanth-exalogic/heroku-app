@@ -3,15 +3,24 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @error1
-    @user = User.find_by_email(userparams[:email])
-    if @user && @user.authenticate(userparams[:password])
-      session[:user_id]=@user.id
-      redirect_to @user
+    @error
+    user = User.find_by_email(userparams[:email])
+    if user && user.authenticate(userparams[:password]) && user.role
+      session[:user_type]='admin'
+      redirect_to '/users'
+    elsif user && user.authenticate(userparams[:password])
+      session[:user_type]='user'
+      session[:user_id]=user.id
+      redirect_to user
     else
-      @error1="Invalid Email-id/Password"
+      @error="Invalid email-id or password"
       render 'index'
     end
+  end
+
+  def destroy
+    session[:user_type]=nil
+    redirect_to root_path
   end
 
   private

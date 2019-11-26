@@ -9,20 +9,17 @@
   </head>
   <body>
     <div class="forms">
-        <ul class="tab-group">
-            <li class="tab active"><a href="/">Users</a></li>
-            <li class="tab"><a href="/admins">Admins</a></li>
-        </ul>
+        <br>
         <form action="/sessions" method="post">
-              <h1>Login</h1>
+              <h1><b>Login</b></h1>
               <div class="input-field">
                 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                 <label for="email">Email</label>
                 <input type="email" name="user[email]" required="email" />
                 <label for="password">Password</label>
                 <input type="password" name="user[password]" required/>
-                <span><%= @error1%></span>
-                <input type="submit" value="Login" class="button"/>
+                <span><%= @error %></span>
+                <input type="submit" value="Login" class="button"/><br>
               </div>
           </form>
     </div>
