@@ -34,7 +34,11 @@
             <td><b>Date of Birth</b></td>
             <td><%= @user.datebirth%></td>
             <td><b>Age</b></td>
-            <td><%= @user.age.to_i%></td>
+            <% unless @user.age==nil%>
+              <td><%= @user.age.to_i%></td>
+            <% else%>
+              <td></td>
+            <% end%>
           </tr>
           <tr>
             <td><b>Date of Joining</b></td>
@@ -44,13 +48,25 @@
           </tr>
           <tr>
             <td><b>Salary per annum</b></td>
-            <td><%= @user.sal%></td>
+            <% unless @user.sal==nil%>
+              <td><%= @user.sal.to_i%></td>
+            <% else%>
+              <td></td>
+            <% end%>
             <td><b>Salary per month</b></td>
-            <td><%= @user.salpm%></td>
+            <% unless @user.salpm==nil%>
+              <td><%= @user.salpm.to_i%></td>
+            <% else%>
+              <td></td>
+            <% end%>
           </tr>
           <tr>
             <td><b>Contact</b></td>
-            <td><%= @user.contact.to_i%></td>
+            <% unless @user.contact==nil%>
+              <td><%= @user.contact%></td>
+            <% else%>
+              <td></td>
+            <% end%>
             <td><b>Email</b></td>
             <td><%= @user.email%></td>
           </tr>
@@ -68,7 +84,11 @@
           </tr>
           <tr>
             <td><b>Pincode</b></td>
-            <td><%= @user.pincode.to_i%></td>
+            <% unless @user.pincode==nil%>
+              <td><%= @user.pincode.to_i%></td>
+            <% else%>
+              <td></td>
+            <% end%>
             <td><b>Gender</b></td>
             <td><%= @user.gender%></td>
           </tr>
@@ -80,7 +100,11 @@
           </tr>
           <tr>
             <td><b>Emergency Contact Number</b></td>
-            <td><%= @user.econtact.to_i%></td>
+            <% unless @user.econtact==nil%>
+              <td><%= @user.econtact%></td>
+            <% else%>
+              <td></td>
+            <% end%>
             <td><b>Primary Skill</b></td>
             <td><%= @user.pskill%></td>
           </tr>
@@ -92,7 +116,11 @@
           </tr>
           <tr>
             <td><b>Notice period in days</b></td>
-            <td><%= @user.notice.to_i%></td>
+            <% unless @user.notice==nil%>
+              <td><%= @user.notice.to_i%></td>
+            <% else%>
+              <td></td>
+            <% end%>
             <td></td>
             <td></td>
           </tr>
