@@ -14,10 +14,15 @@ class UsersController < ApplicationController
   def create
     @error3
     @user = User.new(user_params)
-    if @user.save && is_elder?(@user.datebirth)
-      redirect_to @user
+    if not_negative(@user.sal) && is_elder?(@user.datebirth) && not_negative(@user.notice) && not_negative(@user.contact) && not_negative(@user.econtact)
+      if @user.save
+        redirect_to @user
+      else
+        @error3="Please enter valid details"
+        render 'new'
+      end
     else
-      @error3="Please enter proper Email-id and Password or Check if User is above 18 years old"
+      @error3="Please enter valid details"
       render 'new'
     end
   end
@@ -100,5 +105,9 @@ class UsersController < ApplicationController
 
   def is_elder?(date)
     find_age(date)>=18
+  end
+
+  def not_negative(num)
+    (num.to_i)>=0
   end
 end

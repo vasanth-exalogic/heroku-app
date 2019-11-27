@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def index
+    session[:user_type]=nil
   end
 
   def create

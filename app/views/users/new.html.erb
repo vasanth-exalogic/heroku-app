@@ -17,8 +17,15 @@
     </div>
     <fieldset>
       <legend><strong><h4>CREATE USERS</h4></strong></legend>
-      <span><%= @error3%></span>
       <%= render "form"%>
+      <span><%= @error3%></span>
+      <pre>
+        NOTE
+        1. First Name, Date of birth, Email and Password are compulsory
+        2. User below 18 years can not be added.
+        3. Contact should be of 10 digits and only numeric
+        4. Salary and notice period should be postive.
+      </pre>
     </fieldset>
   </body>
 </html>
