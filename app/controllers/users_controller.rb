@@ -14,17 +14,18 @@ class UsersController < ApplicationController
   def create
     @error3
     @user = User.new(user_params)
-    if not_negative(@user.sal) && is_elder?(@user.datebirth) && not_negative(@user.notice) && not_negative(@user.contact) && not_negative(@user.econtact)
-      if @user.save
-        redirect_to @user
+      if @user.role=='admin' && @user.save
+        redirect_to '/users'
+      elsif @user.role=='user' && @user.save
+        session[:id]=@user.id
+        redirect_to '/temp/' << @user.id.to_s << '/edit'
       else
-        @error3="Please enter valid details"
+        @error3='Enter valid email address and password'
         render 'new'
       end
-    else
-      @error3="Please enter valid details"
-      render 'new'
-    end
+  end
+
+  def form
   end
 
   def edit
@@ -78,9 +79,7 @@ class UsersController < ApplicationController
 
 
   def user_params
-    params.require(:user).permit(:fname,:lname,:datebirth,:datejoining,:age,:sal,:salpm,:contact,:bloodtype,
-    :address,:city,:state,:country,:pincode,:gender,:ename,:relation,:econtact,:pskill,:sskill,:sskill2,
-    :notice,:email,:password,:password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :role)
   end
 
   def is_admin?
@@ -107,7 +106,4 @@ class UsersController < ApplicationController
     find_age(date)>=18
   end
 
-  def not_negative(num)
-    (num.to_i)>=0
-  end
 end

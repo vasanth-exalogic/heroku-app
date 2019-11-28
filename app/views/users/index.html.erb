@@ -5,6 +5,7 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
   </head>
   <body>
     <div class="header">
@@ -16,7 +17,7 @@
     </div>
     </div>
         <fieldset>
-          <legend><strong><h3>ALL USERS</h3></strong></legend>
+          <legend><strong><h3>USERS</h3></strong></legend>
           <table class="w3-table w3-striped w3-border">
             <thead>
               <th>First Name</th>
@@ -29,7 +30,7 @@
               <th></th>
             </thead>
             <% @users.each do |user|%>
-              <% unless user.role %>
+              <% unless user.role=='admin' %>
                 <tr>
                   <td><%= user.fname%></td>
                   <td><%= user.lname%></td>
@@ -37,6 +38,25 @@
                   <td><%= user.contact.to_i%></td>
                   <td><%= user.pskill%></td>
                   <td><%= link_to "Show User", user, :class => "link"%></td>
+                  <td><%= link_to "Edit User", edit_user_path(user), :class => "link"%></td>
+                  <td><%= link_to "Delete User", user_path(user), method: :delete, data: { confirm: "Are you sure?"}, :class => "link"%></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </table>
+        </fieldset>
+        <fieldset>
+          <legend><strong><h3>ADMINS</h3></strong></legend>
+          <table class="pure-table pure-table-horizontal">
+            <thead>
+              <th>Email-id</th>
+              <th></th>
+              <th></th>
+            </thead>
+            <% @users.each do |user|%>
+              <% if user.role=='admin' %>
+                <tr>
+                  <td><%= user.email%></td>
                   <td><%= link_to "Edit User", edit_user_path(user), :class => "link"%></td>
                   <td><%= link_to "Delete User", user_path(user), method: :delete, data: { confirm: "Are you sure?"}, :class => "link"%></td>
                 </tr>
